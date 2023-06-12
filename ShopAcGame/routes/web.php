@@ -21,6 +21,15 @@ Route::get('/danh-muc', [\App\Http\Controllers\frontend\CategoryController::clas
 Route::get('/danh-muc/{slug}', [\App\Http\Controllers\frontend\SubCategoryController::class, 'index'])->name('frontend.sub_category.index'); // danh mục con
 
 // backend
-Route::get('/admin', [\App\Http\Controllers\backend\HomeComtroller::class, 'index'])->name('frontend.home.index');
-
+Route::prefix('admin')->group(function () {
+    Route::get('/', [\App\Http\Controllers\backend\HomeComtroller::class, 'index'])->name('backend.home.index');
+    Route::prefix('category')->group(function () {
+        Route::get('/', [\App\Http\Controllers\backend\CategoryController::class, 'index'])->name('backend.category.index');
+        Route::any('/create', [\App\Http\Controllers\backend\CategoryController::class, 'create'])->name('backend.category.create');
+        Route::any('/store', [\App\Http\Controllers\backend\CategoryController::class, 'store'])->name('backend.category.store');
+        Route::any('/edit{id}', [\App\Http\Controllers\backend\CategoryController::class, 'edit'])->name('backend.category.edit');
+        Route::any('/update{id}', [\App\Http\Controllers\backend\CategoryController::class, 'update'])->name('backend.category.update');
+        Route::any('/destroy{id}', [\App\Http\Controllers\backend\CategoryController::class, 'destroy'])->name('backend.category.destroy');
+    });
+});
 

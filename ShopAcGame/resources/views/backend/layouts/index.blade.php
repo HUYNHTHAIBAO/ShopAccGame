@@ -30,6 +30,8 @@
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{asset('backend')}}/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
     <link href="{{asset('backend')}}/assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+{{--    // cài đặt datatablesjs--}}
+    <link href="cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <!--end::Global Stylesheets Bundle-->
     <!--Begin::Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -1724,7 +1726,7 @@
         </div>
         <!--end::Header main-->
         <!--begin::Separator-->
-        <div class="app-header-separator"></div>
+{{--        <div class="app-header-separator"></div>--}}
         <!--end::Separator-->
     </div>
     <!--end::Header-->
@@ -1765,9 +1767,9 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link--><a class="menu-link active"
-                                                         href="index-2.html"><span
+                                                         href="{{route('backend.home.index')}}"><span
                                         class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Default</span></a><!--end:Menu link-->
+                                        class="menu-title">Trang chủ</span></a><!--end:Menu link-->
                             </div>
                             <!--end:Menu item--><!--begin:Menu item-->
                             <!--end:Menu item--><!--begin:Menu item-->
@@ -1781,17 +1783,17 @@
                     <!--begin:Menu item-->
                     {{-- Danh mục game --}}
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                        <span
+                        <!--begin:Menu link--><span
                             class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-some-files fs-1"><span
                                         class="path1"></span><span class="path2"></span></i></span><span
                                 class="menu-title">Danh mục game</span><span class="menu-arrow"></span></span>
-
+                        <!--end:Menu link--><!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
 
                             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                 <div class="menu-item">
                                     <a class="menu-link"
-                                       href="pages/about.html"><span
+                                       href="{{route('backend.category.index')}}"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                             class="menu-title">Quản lý danh mục</span></a>
                                     <a class="menu-link"
@@ -1805,15 +1807,15 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!--end:Menu sub-->
                     </div>
                     {{-- Dịch vụ game --}}
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                        <span
+                        <!--begin:Menu link--><span
                             class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-some-files fs-1"><span
                                         class="path1"></span><span class="path2"></span></i></span><span
                                 class="menu-title">Dịch vụ game</span><span class="menu-arrow"></span></span>
-
+                        <!--end:Menu link--><!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
 
                             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -1821,7 +1823,7 @@
                                     <a class="menu-link"
                                        href="pages/about.html"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Quản lý Dịch vụ</span></a>
+                                            class="menu-title">Quản lý dịch vụ</span></a>
                                     <a class="menu-link"
                                        href="pages/about.html"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
@@ -1833,38 +1835,37 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!--end:Menu sub-->
                     </div>
-                </div>
-                {{-- Tài khoản game --}}
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                        <span
+                    {{-- Tài khoản game --}}
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link--><span
                             class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-some-files fs-1"><span
                                         class="path1"></span><span class="path2"></span></i></span><span
                                 class="menu-title">Tài khoản game</span><span class="menu-arrow"></span></span>
+                        <!--end:Menu link--><!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
 
-                    <div class="menu-sub menu-sub-accordion">
-
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                            <div class="menu-item">
-                                <a class="menu-link"
-                                   href="pages/about.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Quản lý Tài khoản</span></a>
-                                <a class="menu-link"
-                                   href="pages/about.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Thêm tài khoản</span></a>
-                                <a class="menu-link"
-                                   href="pages/about.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Sửa tài khoản</span></a>
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                <div class="menu-item">
+                                    <a class="menu-link"
+                                       href="pages/about.html"><span
+                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                            class="menu-title">Quản lý tài khoản</span></a>
+                                    <a class="menu-link"
+                                       href="pages/about.html"><span
+                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                            class="menu-title">Thêm tài khoản</span></a>
+                                    <a class="menu-link"
+                                       href="pages/about.html"><span
+                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                            class="menu-title">Sửa tài khoản</span></a>
+                                </div>
                             </div>
                         </div>
+                        <!--end:Menu sub-->
                     </div>
-
                 </div>
-            </div>
                 <!--end::Sidebar menu-->
                 <!--begin::Footer-->
                 <!--end::Footer-->
@@ -1876,13 +1877,11 @@
     @yield('content')
     <!--end:::Main-->
         <!--begin::Footer-->
-        <div id="kt_app_footer"
-             class="app-footer  align-items-center justify-content-center justify-content-md-between flex-column flex-md-row py-3 ">
+        <div id="kt_app_footer" class="app-footer  align-items-center justify-content-center justify-content-md-between flex-column flex-md-row py-3 " >
             <!--begin::Copyright-->
             <div class="text-dark order-2 order-md-1">
                 <span class="text-muted fw-semibold me-1">2023&copy;</span>
-                <a href="https://keenthemes.com/" target="_blank" class="text-gray-800 text-hover-primary">Huỳnh Thái
-                    Bảo</a>
+                <a href="https://keenthemes.com/" target="_blank" class="text-gray-800 text-hover-primary">Huỳnh Thái Bảo</a>
             </div>
             <!--end::Copyright-->
         </div>
@@ -8067,6 +8066,10 @@
 <script src="{{asset('backend')}}/assets/js/custom/utilities/modals/create-account.js"></script>
 <script src="{{asset('backend')}}/assets/js/custom/utilities/modals/create-app.js"></script>
 <script src="{{asset('backend')}}/assets/js/custom/utilities/modals/users-search.js"></script>
+<script src="cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+    let table = new DataTable('#myTable');
+</script>
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 </body>
