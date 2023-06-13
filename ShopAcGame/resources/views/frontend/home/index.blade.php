@@ -65,12 +65,12 @@
                         <div class="classWithPad">
                             <div class="news_image">
                                 <img style="position: absolute;max-width: 79px;height: auto;top: -5px;right: -6px;z-index: 1122;" src="{{asset('frontend')}}/assets/img/giam.png"/>
-                                <a href="/danh-muc/danh-muc-game-free-fire" title="Danh Mục Game Free Fire" class="">
+                                <a href="{{route('frontend.category.index', [$cate->slug])}}" title="{{$cate->title}}" class="">
                                     <img src="{{asset('uploads/category/'.$cate->image)}}" alt="Danh Mục Game Free Fire"></a>
                             </div>
                             <div class="news_title">
                                 <h2>
-                                    <a href="/danh-muc/danh-muc-game-lien-quan" title="Danh Mục Game Liên Quân">{{$cate->title}}</a>
+                                    <a href="{{route('frontend.category.index', [$cate->slug])}}" title="{{$cate->title}}">{{$cate->title}}</a>
                                 </h2>
                             </div>
                             <div class="news_description">

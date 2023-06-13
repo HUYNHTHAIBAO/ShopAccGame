@@ -337,24 +337,16 @@
 <!-- BEGIN: PAGE CONTAINER -->
 <div class="c-layout-page">
     <!-- BEGIN: PAGE CONTENT -->
-    <div class="c-content-box">
+    <div class="c-content-box" style="margin-top: 20px">
         <div id="slider" class="owl-theme section section-cate slideshow_full_width ">
             <div id="slide_banner" class="owl-carousel">
+                @foreach($slider as $key => $sli)
                 <div class="item">
-                    <a href="/" alt="banner chung">
-                        <img src="{{asset('frontend')}}/assets/img/banner.jpg" alt="banner chung">
+                    <a href="/" alt="{{$sli->title}}">
+                        <img src="{{asset('uploads/slider/'.$sli->image)}}" width="100%" height="400px" alt="{{$sli->title}}" style="object-fit: cover">
                     </a>
                 </div>
-                <div class="item">
-                    <a href="/" alt="nitvn2">
-                        <img src="{{asset('frontend')}}/assets/img/banner.jpg" alt="nitvn2">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="/" alt="nitvn3">
-                        <img src="{{asset('frontend')}}/assets/img/banner.jpg" alt="nitvn3">
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

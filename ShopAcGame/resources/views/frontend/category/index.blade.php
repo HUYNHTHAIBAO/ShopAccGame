@@ -41,12 +41,12 @@
                             <div class="classWithPad">
                                 <div class="news_image">
                                     <img style="position: absolute;max-width: 79px;height: auto;top: -5px;right: -6px;z-index: 1122;" src="img/giam.png"/>
-                                    <a href="{{route('frontend.sub_category.index')}}" title="Danh Mục Game Free Fire" class="">
+                                    <a href="{{route('frontend.sub_category.index', 'nick-lien-quan')}}" title="Danh Mục Game Free Fire" class="">
                                         <img src="img/danhmuc.gif" alt="Danh Mục Game Free Fire"></a>
                                 </div>
                                 <div class="news_title">
                                     <h2>
-                                        <a href="/danh-muc/danh-muc-game-lien-quan" title="Danh Mục Game Liên Quân">Danh Mục Game Liên Quân</a>
+                                        <a href="{{route('frontend.sub_category.index', 'nick-lien-quan')}}" title="Danh Mục Game Liên Quân">Danh Mục Game Liên Quân</a>
                                     </h2>
                                 </div>
                                 <div class="news_description">
@@ -61,7 +61,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="custom72 view">
-                                                <a href="{{route('frontend.sub_category.index')}}" class="" title="Danh Mục Game Liên Quân">
+                                                <a href="{{route('frontend.sub_category.index', 'nick-lien-quan')}}" class="" title="Danh Mục Game Liên Quân">
                                                     &nbsp;
                                                     <style type="text/css">
                                                         .custom72{

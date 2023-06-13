@@ -1796,14 +1796,6 @@
                                        href="{{route('backend.category.index')}}"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                             class="menu-title">Quản lý danh mục</span></a>
-                                    <a class="menu-link"
-                                       href="pages/about.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Thêm danh mục</span></a>
-                                    <a class="menu-link"
-                                       href="pages/about.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Sửa danh mục</span></a>
                                 </div>
                             </div>
                         </div>
@@ -1814,24 +1806,16 @@
                         <!--begin:Menu link--><span
                             class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-some-files fs-1"><span
                                         class="path1"></span><span class="path2"></span></i></span><span
-                                class="menu-title">Dịch vụ game</span><span class="menu-arrow"></span></span>
+                                class="menu-title">Slider</span><span class="menu-arrow"></span></span>
                         <!--end:Menu link--><!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
 
                             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                 <div class="menu-item">
                                     <a class="menu-link"
-                                       href="pages/about.html"><span
+                                       href="{{route('backend.slider.index')}}"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Quản lý dịch vụ</span></a>
-                                    <a class="menu-link"
-                                       href="pages/about.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Thêm dịch vụ</span></a>
-                                    <a class="menu-link"
-                                       href="pages/about.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Sửa dịch vụ</span></a>
+                                            class="menu-title">Quản lý slider</span></a>
                                 </div>
                             </div>
                         </div>
@@ -1842,24 +1826,16 @@
                         <!--begin:Menu link--><span
                             class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-some-files fs-1"><span
                                         class="path1"></span><span class="path2"></span></i></span><span
-                                class="menu-title">Tài khoản game</span><span class="menu-arrow"></span></span>
+                                class="menu-title">Bài viết</span><span class="menu-arrow"></span></span>
                         <!--end:Menu link--><!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
 
                             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                 <div class="menu-item">
                                     <a class="menu-link"
-                                       href="pages/about.html"><span
+                                       href="{{route('backend.blogs.index')}}"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Quản lý tài khoản</span></a>
-                                    <a class="menu-link"
-                                       href="pages/about.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Thêm tài khoản</span></a>
-                                    <a class="menu-link"
-                                       href="pages/about.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Sửa tài khoản</span></a>
+                                            class="menu-title">Quản lý bài viết</span></a>
                                 </div>
                             </div>
                         </div>
@@ -8066,9 +8042,49 @@
 <script src="{{asset('backend')}}/assets/js/custom/utilities/modals/create-account.js"></script>
 <script src="{{asset('backend')}}/assets/js/custom/utilities/modals/create-app.js"></script>
 <script src="{{asset('backend')}}/assets/js/custom/utilities/modals/users-search.js"></script>
+{{--// ckeditor 4--}}
+<script src="//cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script>
 <script src="cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
-    let table = new DataTable('#myTable');
+
+        // Replace the <textarea id="editor1"> with a CKEditor 4
+                // instance, using default configuration.
+                CKEDITOR.replace( 'content_blog' );
+                CKEDITOR.replace( 'desc_blog' );
+
+    // let table = new DataTable('#myTable');
+    function ChangeToSlug()
+    {
+        var slug;
+
+        //Lấy text từ thẻ input title
+        slug = document.getElementById("slug").value;
+        slug = slug.toLowerCase();
+        //Đổi ký tự có dấu thành không dấu
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+        slug = slug.replace(/đ/gi, 'd');
+        //Xóa các ký tự đặt biệt
+        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+        //Đổi khoảng trắng thành ký tự gạch ngang
+        slug = slug.replace(/ /gi, "-");
+        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+        slug = slug.replace(/\-\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-/gi, '-');
+        //Xóa các ký tự gạch ngang ở đầu và cuối
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+        //In slug ra textbox có id “slug”
+        document.getElementById('convert_slug').value = slug;
+    }
+
 </script>
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
@@ -8076,5 +8092,3 @@
 <!--end::Body-->
 <!-- Mirrored from preview.keenthemes.com/saul-html-pro/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jun 2023 09:07:40 GMT -->
 </html>
-1
-1

@@ -16,6 +16,13 @@
                 <input type="text" value="{{$category->title}}" name="title" class="form-control" id="title" >
             </div>
             <div class="mb-3">
+                <label for="title" class="form-label">Slug tên danh mục</label>
+                <input type="text" name="slug" value="{{$category->slug}}" class="form-control" id="convert_slug" >
+                {{--            @if($errors->has('title'))--}}
+                {{--                <div class="alert alert-danger" style="color: red">{{ $errors->first('title') }}</div>--}}
+                {{--            @endif--}}
+            </div>
+            <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
                 <textarea class="form-control"  name="description" id="exampleFormControlTextarea1" rows="3">{{$category->description}}</textarea>
             </div>

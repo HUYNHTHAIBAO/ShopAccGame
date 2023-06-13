@@ -13,10 +13,17 @@
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Tên danh mục</label>
-            <input type="text" name="title" class="form-control" id="title" >
+            <input type="text" name="title" class="form-control" id="slug" onkeyup="ChangeToSlug()">
 {{--            @if($errors->has('title'))--}}
 {{--                <div class="alert alert-danger" style="color: red">{{ $errors->first('title') }}</div>--}}
 {{--            @endif--}}
+        </div>
+        <div class="mb-3">
+            <label for="title" class="form-label">Slug tên danh mục</label>
+            <input type="text" name="slug" class="form-control" id="convert_slug" >
+            {{--            @if($errors->has('title'))--}}
+            {{--                <div class="alert alert-danger" style="color: red">{{ $errors->first('title') }}</div>--}}
+            {{--            @endif--}}
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
